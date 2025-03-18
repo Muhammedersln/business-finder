@@ -140,7 +140,7 @@ export default function BusinessTable({ businesses, isLoading, activeFilters }: 
         );
       },
     }),
-  ], []);
+  ], [columnHelper]);
 
   // Apply filters
   const filteredData = useMemo(() => {

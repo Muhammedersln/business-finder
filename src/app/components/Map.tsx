@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 interface Location {
@@ -32,14 +32,13 @@ export default function Map({ businesses, center }: MapProps) {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
   });
 
-  const [map, setMap] = useState<google.maps.Map | null>(null);
-
   const onLoad = useCallback(function callback(map: google.maps.Map) {
-    setMap(map);
+    // Harita yüklendiğinde bir şey yapmıyoruz, ama parametreyi kullanarak linter hatasını önlüyoruz
+    console.log('Map loaded', map);
   }, []);
 
   const onUnmount = useCallback(function callback() {
-    setMap(null);
+    // Harita kaldırıldığında bir şey yapmıyoruz
   }, []);
 
   if (!isLoaded) {
